@@ -1,0 +1,25 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.20",
+        "axios": "^1.6.4",
+        "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4.41",
+        "tailwindcss": "^3.4.10",
+        "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "alpinejs": "^3.14.7",
+        "aos": "^2.3.4",
+        "apexcharts": "^3.54.1",
+        "flowbite": "^2.5.1",
+        "simple-datatables": "^9.2.1",
+        "sweetalert2": "^11.6.13",
+        "swiper": "^11.1.12"
+    }
+}
