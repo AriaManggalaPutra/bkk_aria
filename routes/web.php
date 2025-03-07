@@ -121,6 +121,9 @@ Route::middleware('checkRole:admin')->group(function () {
         Route::get('/cms/footer/{id}/edit', [CMSFooterController::class, 'edit'])->name('footer.edit');
         Route::put('/cms/footer/{id}', [CMSFooterController::class, 'update'])->name('footer.update');
         Route::put('/cms/keunggulan/{id}', [CMSBerandaController::class, 'updateKeunggulan'])->name('keunggulan.update');
+        Route::put('/cms/lowongan/{id}', [CMSLowonganController::class, 'update'])->name('lowongan.update');
+        Route::put('/cms/rekruter/{id}', [CMSRekruterController::class, 'update'])->name('rekruter.update');
+        Route::put('/cms/keterserapan/{id}', [CMSKeterserapanController::class, 'update'])->name('keterserapan.update');
     });
 
     Route::prefix('profile')->name('profile.')->group(function () {
