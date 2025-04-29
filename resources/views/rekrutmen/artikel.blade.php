@@ -66,9 +66,9 @@
                                                 {!! Str::limit($item->konten, 40) !!}
                                             </p>
                                             <div class="flex items-center gap-2">
-                                                <p class="text-xs text-gray-500">John Doe</p>
+                                                <p class="text-xs text-gray-500">{{ auth()->user()->nama }}</p>
                                                 <div class="bg-gray-300 w-2 h-2 rounded-full"></div>
-                                                <p class="text-xs text-gray-500">20 July 2024</p>
+                                                <p class="text-xs text-gray-500">{{$item->created_at}}</p>
                                             </div>
                                         </div>
                                         <div class="md:block hidden w-[120px] sm:w-[220px] rounded-xl order-1 sm:order-2 mt-4 sm:mt-0 sm:ml-auto aspect-square">
@@ -270,9 +270,9 @@
                                                     {!! Str::limit($item->konten, 40) !!}
                                                 </p>
                                                 <div class="flex items-center gap-2">
-                                                    <p class="text-xs text-gray-500">John Doe</p>
+                                                    <p class="text-xs text-gray-500">{{ auth()->user()->nama }}</p>
                                                     <div class="bg-gray-300 w-2 h-2 rounded-full"></div>
-                                                    <p class="text-xs text-gray-500">20 July 2024</p>
+                                                    <p class="text-xs text-gray-500">{{$item->created_at}}</p>
                                                 </div>
                                             </div>
                                             <div class="md:block hidden w-[120px] sm:w-[220px] rounded-xl order-1 sm:order-2 mt-4 sm:mt-0 sm:ml-auto aspect-square">
@@ -473,9 +473,9 @@
                                                     {!! Str::limit($item->konten, 40) !!}
                                                 </p>
                                                 <div class="flex items-center gap-2">
-                                                    <p class="text-xs text-gray-500">John Doe</p>
+                                                    <p class="text-xs text-gray-500">{{ auth()->user()->nama }}</p>
                                                     <div class="bg-gray-300 w-2 h-2 rounded-full"></div>
-                                                    <p class="text-xs text-gray-500">20 July 2024</p>
+                                                    <p class="text-xs text-gray-500">{{$item->created_at}}</p>
                                                 </div>
                                             </div>
                                             <div class="md:block hidden w-[120px] sm:w-[220px] rounded-xl order-1 sm:order-2 mt-4 sm:mt-0 sm:ml-auto aspect-square">

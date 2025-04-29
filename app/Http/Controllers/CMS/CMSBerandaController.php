@@ -85,7 +85,7 @@ class CMSBerandaController extends Controller
     {
         // Cari data berdasarkan ID
         $about = AboutSection::findOrFail($id);
-
+    
         // Validasi input
         $validated = $request->validate([
             'outline_title' => 'required|string|max:255',
@@ -93,30 +93,35 @@ class CMSBerandaController extends Controller
             'detail_information' => 'required|string',
             'button_label' => 'nullable|string|max:255',
             'button_link' => 'nullable|url',
-            'large_image' => 'nullable|',
+            'large_image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ]);
-
-        // Prepare data for update
-        $data = [
-            'outline_title' => $request->input('outline_title'),
-            'solid_title' => $request->input('solid_title'),
-            'detail_information' => $request->input('detail_information'),
-            'button_label' => $request->input('button_label'),
-            'button_link' => $request->input('button_link'),
-        ];
-
-        // Handle image upload if present
+    
+        // Update data teks
+        $about->update([
+            'outline_title' => $request->outline_title,
+            'solid_title' => $request->solid_title,
+            'detail_information' => $request->detail_information,
+            'button_label' => $request->button_label,
+            'button_link' => $request->button_link,
+        ]);
+    
+        // Handle image upload jika ada
         if ($request->hasFile('large_image')) {
-            $path = $request->file('large_image')->store('images', 'public');
-            $data['large_image'] = $path;
+            // Hapus gambar lama jika ada
+            if ($about->large_image && file_exists(public_path('storage/images/' . $about->large_image))) {
+                unlink(public_path('storage/images/' . $about->large_image));
+            }
+    
+            // Pindahkan gambar baru ke storage
+            $request->file('large_image')->move('storage/images/', $request->file('large_image')->getClientOriginalName());
+            
+            // Update path gambar di database
+            $about->large_image = 'images/' . $request->file('large_image')->getClientOriginalName();
+            $about->save();
         }
-
-        // Update the record
-        $about->update($data);
-
-        // Redirect with success message
-        return redirect()->back()->with('success', 'About Section saved successfully!');
-
+    
+        // Redirect dengan pesan sukses
+        return redirect()->back()->with('success', 'About Section updated successfully!');
     }
 
     public function updateKeunggulan(Request $request, $id)
@@ -193,5 +198,4 @@ class CMSBerandaController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
-
 }

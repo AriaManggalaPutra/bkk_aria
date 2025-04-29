@@ -68,7 +68,7 @@
             <div class="mb-4">
                 <label for="large_image" class="block text-sm font-medium text-gray-700">Large Image</label>
                 @if ($about->large_image)
-                <img src="{{ asset($about->large_image) }}" alt="Large Image" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="{{ asset('storage/' . $about->large_image) }}" alt="Large Image" class="w-full h-64 object-cover rounded-lg shadow-md">
                 @endif
             </div>
         </form>
@@ -88,7 +88,6 @@
                 <form action="{{ route('CMS.beranda.settings.updateAbout', $about->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-
                     <div class="mb-4">
                         <label for="outline_title" class="block text-sm font-medium text-gray-700">Outline title</label>
                         <input type="text" name="outline_title" id="outline_title" value="{{ $about->outline_title ?? '' }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500" required>
@@ -116,7 +115,7 @@
 
                     <div class="mb-4">
                         <label for="large_image" class="block text-sm font-medium text-gray-700">Large Image</label>
-                        <input type="file" name="large_image" id="large_image" class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer" accept="image/*">
+                        <input type="file" name="large_image" id="large_image" value="{{ asset('storage/gambars/' . $about['large_image']) }}" class="mt-1 block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer" accept="image/*">
                     </div>
 
                     <div class="flex justify-end mt-6">
